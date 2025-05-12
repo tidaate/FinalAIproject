@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>AI Profession Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>AI Profession Predictor</h1>
+        <form method="post" class="predict-form">
+            <label for="average_score">Ваш средний балл (0-100):</label>
+            <input
+                type="number"
+                step="0.01"
+                min="0"
+                max="100"
+                name="average_score"
+                id="average_score"
+                placeholder="Например, 85.5"
+                required
+            />
+            <label for="favorite_subject">Любимый предмет:</label>
+            <select name="favorite_subject" id="favorite_subject" required>
+                <option value="Math">Математика</option>
+                <option value="Physics">Физика</option>
+                <option value="Informatics">Информатика</option>
+                <option value="Biology">Биология</option>
+                <option value="History">История</option>
+            </select>
+            <button type="submit">Предсказать профессию</button>
+        </form>
+        {% if result %}
+        <div class="result-box">
+            <h2>Ваша профессия:</h2>
+            <p>{{ result }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
